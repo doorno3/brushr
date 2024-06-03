@@ -1,0 +1,142 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>BRUSHR</title>
+</head>
+<body>
+
+<h1>Welcome to Brushr</h1>
+
+<div class="divTeeth">
+<img class="theTeeth" src="teeth-kborder.png" alt="Teeth">
+
+	<img id="hl0" class="theTeeth teethHighlight" src="teeth-upperleft.png" hidden="hidden" alt="upper left">
+	<img id="hl1" class="theTeeth teethHighlight" src="teeth-lowerleft.png" hidden="hidden" alt="lower left">
+	<img id="hl2" class="theTeeth teethHighlight" src="teeth-upperright.png" hidden="hidden" alt="lower left">
+	<img id="hl3" class="theTeeth teethHighlight" src="teeth-lowerright.png" hidden="hidden" alt="lower left">
+	<img id="hl4" class="theTeeth teethHighlight" src="teeth-lowermiddle.png" hidden="hidden" alt="lower left">
+	<img id="hl5" class="theTeeth teethHighlight" src="teeth-uppermiddle.png" hidden="hidden" alt="lower left">
+
+	<img id="hl6" class="theTeeth teethHighlight" src="teeth-flosstext.png" hidden="hidden" alt="flosstext">
+
+<div class="divButton">
+<button class="theButton interactiveText" id="startButton">START</button>
+<h2 class="interactiveText" id="timer"></h2>
+</div>
+
+</div>
+
+<script>
+
+	function setHighlightsInvisible() {
+		document.getElementById('hl0').hidden = true;
+		document.getElementById('hl1').hidden = true;
+		document.getElementById('hl2').hidden = true;
+		document.getElementById('hl3').hidden = true;
+		document.getElementById('hl4').hidden = true;
+		document.getElementById('hl5').hidden = true;
+	}
+
+    document.getElementById('startButton').addEventListener('click', function() {
+        var timerDisplay = document.getElementById('timer');
+		var timerStartButton = document.getElementById('startButton')
+        var startTime = Date.now();
+        var endTime = startTime + 2 * 60 * 1000; // 2 minutes in milliseconds
+
+		timerStartButton.hidden = true;
+
+        updateTimer();
+
+        var timerInterval = setInterval(updateTimer, 500);
+
+		var hl0 = document.getElementById("hl0");
+		var hl1 = document.getElementById("hl1");
+		var hl2 = document.getElementById("hl2");
+		var hl3 = document.getElementById("hl3");
+		var hl4 = document.getElementById("hl4");
+		var hl5 = document.getElementById("hl5");
+
+		var hl6 = document.getElementById("hl6");
+
+		hl5.hidden = false;
+
+        function updateTimer() {
+            var currentTime = Date.now();
+            var remainingTime = endTime - currentTime;
+
+            if (remainingTime <= 0) {
+                timerDisplay.textContent = '';
+				setHighlightsInvisible();
+				timerStartButton.hidden = false;
+
+				if (hl6.hidden) {
+					hl6.hidden = false;
+				} else {
+					hl6.hidden = true;
+				}
+
+            } else {
+                var minutes = Math.floor(remainingTime / 60000);
+                var seconds = Math.floor((remainingTime % 60000) / 1000);
+				var totalSeconds = Math.floor(remainingTime / 1000);
+
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                timerDisplay.textContent = minutes + ':' + seconds;
+
+				if (totalSeconds <= 20 && totalSeconds > 0 && hl0.hidden) {
+					setHighlightsInvisible();
+					hl0.hidden = false;
+				} else if (totalSeconds <= 40 && totalSeconds > 20 && hl1.hidden) {
+					setHighlightsInvisible();
+					hl1.hidden = false;
+				} else if (totalSeconds <= 60 && totalSeconds > 40 && hl2.hidden) {
+					setHighlightsInvisible();
+					hl2.hidden = false;
+				} else if (totalSeconds <= 80 && totalSeconds > 60 && hl3.hidden) {
+					setHighlightsInvisible();
+					hl3.hidden = false;
+				} else if (totalSeconds <= 100 && totalSeconds > 80 && hl4.hidden) {
+					setHighlightsInvisible();
+					hl4.hidden = false;
+				}
+
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

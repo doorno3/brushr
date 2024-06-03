@@ -1,0 +1,68 @@
+
+
+h1 {
+	color: #a81e1e;
+	font-family: Courier New;
+	text-align:center;
+}
+
+.interactiveText {
+	color:#a81e1e;
+	font-family: Courier New;
+	font-size: 50px;
+	line-height: 0.5;
+}
+
+.divTeeth {
+	margin-right:auto;
+	margin-left:auto;
+	max-width:1250px;
+	position:relative;
+}
+
+.divButton {
+	display:flex;
+	justify-content:center;
+	align-content:center;
+	width:100%;
+}
+
+.theTeeth {
+	width:100%;
+}
+
+.teethHighlight {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.theButton {
+	background-color: #d00000;
+}
+
+body {
+	background-color: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
